@@ -3,54 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senior Software Engineer Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Riadh Bougaalech - Senior Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background: #0f0f1e; }
+        
+        /* Animated Background */
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        header { 
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); }
+        
+        header h1 { 
+            font-size: 4rem; 
+            margin-bottom: 10px; 
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            animation: slideInDown 0.8s ease;
+        }
+        
+        header h2 { 
+            font-size: 1.5rem; 
+            font-weight: 300; 
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+            animation: slideInUp 0.8s ease 0.2s both;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ee7752, #e73c7e);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover { color: #ee7752; }
+        nav a:hover::after { width: 100%; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        section {
+            margin: 60px auto;
+            padding: 60px 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        section h3 {
+            color: #ee7752;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ee7752, #e73c7e, #23a6d5);
+            border-radius: 2px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .skill-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f0f5 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ee7752;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(238, 119, 82, 0.1), transparent);
+            transition: right 0.5s;
+        }
+        
+        .skill-card:hover::before { right: 100%; }
+        .skill-card:hover { transform: translateY(-15px); box-shadow: 0 15px 40px rgba(238, 119, 82, 0.3); border-left-color: #e73c7e; }
+        
+        .skill-card h4 {
+            color: #ee7752;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+        
+        .skill-card p { color: #666; font-size: 1rem; }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: white;
+            border: 2px solid #f0f0f0;
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(238, 119, 82, 0.1) 0%, transparent 70%);
+            transition: all 0.3s;
+            z-index: 0;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(238, 119, 82, 0.25);
+            border-color: #ee7752;
+        }
+        
+        .project-card:hover::before { top: -25%; right: -25%; }
+        
+        .project-card h4 {
+            color: #ee7752;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tech-badge {
+            background: linear-gradient(135deg, #ee7752, #e73c7e);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tech-badge:hover { transform: scale(1.1); }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-item {
+            margin-bottom: 40px;
+            padding-left: 50px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #ee7752, #e73c7e);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #ee7752;
+        }
+        
+        .timeline-item h4 {
+            color: #ee7752;
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+        
+        .timeline-item .company {
+            color: #e73c7e;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-item p { color: #666; line-height: 1.7; }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #ee7752, #e73c7e);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-section h3 { color: white; }
+        .contact-section h3::after { background: rgba(255,255,255,0.5); }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .contact-link {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+        
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            border-color: white;
+        }
+        
+        .contact-link i { font-size: 1.4rem; }
+        
+        footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        
+        .download-cv {
+            background: linear-gradient(135deg, #ee7752, #e73c7e);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+            transition: all 0.3s;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(238, 119, 82, 0.3);
+        }
+        
+        .download-cv:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(238, 119, 82, 0.5);
+        }
+        
+        @keyframes slideInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            header h2 { font-size: 1.2rem; }
+            section { padding: 30px 20px; }
+            nav ul { gap: 20px; }
+            .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Riadh Bougaalech</h1>
         <h2>Senior Software Engineer</h2>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section id="about">
-        <h3>About Me</h3>
-        <p>Experienced Senior Software Engineer with a strong background in developing scalable web applications and implementing effective software solutions. Proficient in various programming languages and passionate about leveraging technology to solve complex problems.</p>
-    </section>
-
-    <section id="projects">
-        <h3>Projects</h3>
-        <ul>
-            <li>
-                <h4>Project One</h4>
-                <p>Description of Project One. It involved using XYZ technologies.</p>
-            </li>
-            <li>
-                <h4>Project Two</h4>
-                <p>Description of Project Two. It focused on ABC solutions.</p>
-            </li>
-            <li>
-                <h4>Project Three</h4>
-                <p>Description of Project Three. It included working with LMN frameworks.</p>
-            </li>
+    <nav>
+        <ul class="container">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
+    </nav>
+
+    <section id="about" class="container">
+        <h3>About Me</h3>
+        <p>I'm a passionate Senior Software Engineer with 7+ years of experience building innovative, scalable solutions. I specialize in full-stack development, cloud architecture, and leading high-performing teams. With a proven track record of delivering enterprise-grade applications, I'm committed to excellence in every project I undertake.</p>
     </section>
 
-    <section id="contact">
-        <h3>Contact Me</h3>
-        <p>Email: <a href="mailto:riadh.bougaalech@example.com">riadh.bougaalech@example.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/riadh-bougaalech">linkedin.com/in/riadh-bougaalech</a></p>
-        <p>GitHub: <a href="https://github.com/riadh2">github.com/riadh2</a></p>
+    <section id="skills" class="container">
+        <h3>Technical Skills</h3>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h4>💻 Backend Development</h4>
+                <p>Python, Java, Node.js, C++, Go, PHP, Ruby</p>
+            </div>
+            <div class="skill-card">
+                <h4>🎨 Frontend Development</h4>
+                <p>React, Vue.js, Angular, TypeScript, HTML5, CSS3, Webpack</p>
+            </div>
+            <div class="skill-card">
+                <h4>🗄️ Databases</h4>
+                <p>PostgreSQL, MongoDB, Redis, Elasticsearch, Cassandra</p>
+            </div>
+            <div class="skill-card">
+                <h4>☁️ Cloud & DevOps</h4>
+                <p>AWS, Azure, GCP, Docker, Kubernetes, Jenkins, GitLab CI/CD</p>
+            </div>
+            <div class="skill-card">
+                <h4>🏗️ Architecture</h4>
+                <p>Microservices, REST APIs, GraphQL, Event-Driven Architecture</p>
+            </div>
+            <div class="skill-card">
+                <h4>👥 Leadership</h4>
+                <p>Team Management, Mentoring, Problem-Solving, Agile, Scrum</p>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Riadh Bougaalech. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+    <section id="experience" class="container">
+        <h3>Professional Experience</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Senior Software Engineer</h4>
+                <p class="company">🏢 Tech Innovations Inc. | 2022 - Present</p>
+                <p>Leading development of enterprise-scale applications with microservices architecture. Mentoring junior developers, architecting scalable solutions, and driving CI/CD improvements that reduced deployment time by 60%.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Software Engineer</h4>
+                <p class="company">💼 Digital Solutions Ltd. | 2019 - 2022</p>
+                <p>Developed full-stack web applications serving 100K+ concurrent users. Collaborated with cross-functional teams, implemented automated testing increasing code coverage to 85%, and optimized database queries improving performance by 40%.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Junior Software Developer</h4>
+                <p class="company">🚀 StartUp Innovations | 2017 - 2019</p>
+                <p>Built features for web and mobile applications. Participated in agile development, contributed to open-source projects, and established best practices for code quality and documentation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        *
+
