@@ -1,0 +1,55 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.navbar {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    border-bottom: 2px solid #333;
+}
+
+.section {
+    margin: 40px 0;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+.project-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.project-card h3 {
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: #555;
+}
