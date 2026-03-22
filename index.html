@@ -56,12 +56,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        @keyframes particleFloat {
-            0%, 100% { transform: translateY(0px); opacity: 0; }
-            10%, 90% { opacity: 1; }
-            50% { transform: translateY(-100px); }
-        }
-
         /* HEADER HERO */
         header {
             position: relative;
@@ -201,6 +195,7 @@
             justify-content: center;
             gap: 50px;
             padding: 0 20px;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -359,7 +354,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            min-height: 400px;
+            min-height: auto;
             display: flex;
             flex-direction: column;
         }
@@ -379,7 +374,6 @@
             border-color: #ff006e;
             box-shadow: 0 0 60px rgba(255, 0, 110, 0.6);
             transform: translateY(-20px) scale(1.02);
-            animation: glitchEffect 0.3s;
         }
 
         .project-card:hover::before {
@@ -388,20 +382,74 @@
         }
 
         .project-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
             color: #00d4ff;
             position: relative;
             z-index: 1;
         }
 
+        .project-card .metrics {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .metric {
+            background: rgba(0, 212, 255, 0.15);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #ffbe0b;
+            border-left: 2px solid #ffbe0b;
+        }
+
         .project-card p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
             flex-grow: 1;
             position: relative;
             z-index: 1;
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .project-features {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-features h4 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .project-features ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .project-features li {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 5px 0;
+            font-size: 0.9rem;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .project-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
         }
 
         .project-tech {
@@ -411,6 +459,8 @@
             position: relative;
             z-index: 1;
             margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
         }
 
         .tech-badge {
@@ -533,6 +583,29 @@
             transform: translateY(-5px);
         }
 
+        .cv-button {
+            padding: 20px 50px;
+            background: linear-gradient(90deg, #ff006e, #00d4ff);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+            margin: 30px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cv-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 80px rgba(0, 212, 255, 0.8);
+        }
+
         /* FOOTER */
         footer {
             background: rgba(0, 0, 0, 0.9);
@@ -557,6 +630,7 @@
             .timeline-item { width: calc(100% - 80px); }
             .timeline-item::before { left: 10px !important; }
             .nav-content { gap: 20px; }
+            .project-card { padding: 25px; }
         }
     </style>
 </head>
@@ -574,8 +648,8 @@
     <header>
         <div class="header-content">
             <h1>RIADH BOUGAALECH</h1>
-            <h2>AI/ML Backend Engineer</h2>
-            <p>Building Intelligent Systems | Crafting Scalable Solutions | Transforming Ideas into Reality</p>
+            <h2>Senior Software Engineer | AI/ML | Backend Specialist</h2>
+            <p>5+ Years Building Intelligent Systems | Crafting Production-Grade AI/ML Solutions | Transforming Complex Problems into Elegant Code</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
                 <a href="#contact" class="btn btn-secondary">Get In Touch</a>
@@ -585,85 +659,102 @@
 
     <section id="about">
         <h2>About Me</h2>
-        <p style="text-align: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 900px; margin: 40px auto;">Senior Software Engineer with 5+ years building robust backends, scalable APIs, and AI-powered systems. Specialized in backend development with full-stack capabilities. Creates, trains, and integrates AI/ML models into production products.</p>
+        <p style="text-align: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 900px; margin: 40px auto; line-height: 2;">
+            Senior Software Engineer with 5+ years of experience building robust backends, scalable APIs, and AI-powered systems. Specialized in backend development with full-stack capabilities. Expert at creating, training, and integrating AI/ML models into production products. Works closely with clients to architect and deliver cutting-edge technical solutions.
+        </p>
     </section>
 
     <section id="skills">
         <h2>Technical Arsenal</h2>
         <div class="skills-container">
             <div class="skill-card">
-                <h3>🔧 Backend</h3>
+                <h3>🔧 Backend Development</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Python</span>
                     <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Flask</span>
                     <span class="skill-tag">Django</span>
+                    <span class="skill-tag">TypeScript</span>
                     <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">JWT</span>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>🤖 AI/ML</h3>
+                <h3>🤖 AI/ML & Deep Learning</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">PyTorch</span>
                     <span class="skill-tag">TensorFlow</span>
                     <span class="skill-tag">XGBoost</span>
                     <span class="skill-tag">Computer Vision</span>
                     <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">OCR</span>
+                    <span class="skill-tag">Faster R-CNN</span>
+                    <span class="skill-tag">Detectron2</span>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>☁️ Cloud/DevOps</h3>
+                <h3>☁️ Cloud & DevOps</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">AWS (ECS, EC2, ECR)</span>
                     <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Docker Compose</span>
                     <span class="skill-tag">Kubernetes</span>
-                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">GitLab CI/CD</span>
+                    <span class="skill-tag">TorchServe</span>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>🎨 Frontend</h3>
+                <h3>🎨 Frontend Development</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">React.js</span>
                     <span class="skill-tag">Next.js</span>
                     <span class="skill-tag">Angular</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>🗄️ Databases</h3>
+                <h3>🗄️ Databases & Data</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">MongoDB</span>
                     <span class="skill-tag">PostgreSQL</span>
                     <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Firebase</span>
                 </div>
             </div>
             <div class="skill-card">
-                <h3>⚙️ Other</h3>
+                <h3>⚙️ Advanced Technologies</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Claude AI</span>
-                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">NETCONF</span>
+                    <span class="skill-tag">MQTT</span>
+                    <span class="skill-tag">LoRa</span>
                     <span class="skill-tag">IoT</span>
+                    <span class="skill-tag">C/C++</span>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="experience">
-        <h2>Experience</h2>
+        <h2>Professional Experience</h2>
         <div class="timeline">
             <div class="timeline-item">
-                <h3>Senior Software Engineer</h3>
-                <p class="company">Plug and Tel | Apr 2024 – Present</p>
-                <p>Building ML pipelines for call center systems. 4x performance improvement on production systems.</p>
+                <h3>🚀 Senior Software Engineer</h3>
+                <p class="company">Plug and Tel, Tunisia | Apr 2024 – Present</p>
+                <p>Leading development of ML pipelines and intelligent backend systems for large-scale telecommunications infrastructure.</p>
             </div>
             <div class="timeline-item">
-                <h3>Software Engineer</h3>
-                <p class="company">Innovant Studio | Sep 2021 – Apr 2024</p>
-                <p>Led development of healthcare & e-commerce platforms. Managed teams and delivered enterprise solutions.</p>
+                <h3>💼 Software Engineer</h3>
+                <p class="company">Innovant Studio, Tunisia | Sep 2021 – Apr 2024</p>
+                <p>Led full-stack development of healthcare and e-commerce platforms. Managed development teams and delivered enterprise-grade solutions for international clients across UAE, Saudi Arabia, and Turkey.</p>
             </div>
             <div class="timeline-item">
-                <h3>Software Engineer</h3>
-                <p class="company">Unfrauded | Jun 2020 – Aug 2021</p>
-                <p>Engineered AI pipelines for fraud detection and document processing using Computer Vision.</p>
+                <h3>🎯 Software Engineer</h3>
+                <p class="company">Unfrauded, Tunisia | Jun 2020 – Aug 2021</p>
+                <p>Engineered AI/ML pipelines for fraud detection and document processing. Specialized in Computer Vision for automated insurance document analysis and anomaly detection.</p>
             </div>
         </div>
     </section>
@@ -672,57 +763,159 @@
         <h2>Featured Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>🎤 Answering Machine Detection</h3>
-                <p>ML pipeline that detects answering machines in calls using XGBoost. Achieved 4x speed improvement and 50% CPU reduction.</p>
+                <h3>🎤 Answering Machine Detection – ML Pipeline</h3>
+                <div class="metrics">
+                    <span class="metric">⚡ 4x Faster</span>
+                    <span class="metric">💾 50% CPU Reduction</span>
+                    <span class="metric">📈 Revenue Impact</span>
+                </div>
+                <p>Rebuilt legacy rule-based system from scratch using advanced machine learning. Engineered complete ML pipeline including audio data collection, model training, and optimization. Selected XGBoost as optimal model after comprehensive evaluation of multiple algorithms.</p>
+                <div class="project-features">
+                    <h4>Key Achievements:</h4>
+                    <ul>
+                        <li>4x speed improvement over legacy system</li>
+                        <li>Significantly enhanced accuracy metrics</li>
+                        <li>Reduced CPU consumption by 50%</li>
+                        <li>Increased platform revenue through improved detection</li>
+                    </ul>
+                </div>
                 <div class="project-tech">
                     <span class="tech-badge">Python</span>
                     <span class="tech-badge">XGBoost</span>
+                    <span class="tech-badge">PyTorch</span>
                     <span class="tech-badge">Flask</span>
+                    <span class="tech-badge">Docker</span>
                 </div>
             </div>
+
             <div class="project-card">
-                <h3>🏥 Cardiac Health Platform</h3>
-                <p>Healthcare system screening 5,000+ students with multi-role RBAC, analytics, and real-time reporting.</p>
+                <h3>🏥 Pediatric Cardiac Health Monitoring System</h3>
+                <div class="metrics">
+                    <span class="metric">👥 5,000+ Students</span>
+                    <span class="metric">🌍 UAE Deployment</span>
+                    <span class="metric">👨‍⚕️ Multi-Role RBAC</span>
+                </div>
+                <p>Architected and deployed enterprise healthcare platform for cardiac screenings in UAE schools. Implemented comprehensive role-based access control for parents, nurses, doctors, and administrators. Led frontend team development and managed direct client reporting for stakeholders.</p>
+                <div class="project-features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Multi-role RBAC system (4 distinct roles)</li>
+                        <li>Real-time patient data management</li>
+                        <li>Advanced reporting and analytics</li>
+                        <li>Secure healthcare data compliance</li>
+                    </ul>
+                </div>
                 <div class="project-tech">
                     <span class="tech-badge">Node.js</span>
                     <span class="tech-badge">Next.js</span>
                     <span class="tech-badge">MongoDB</span>
+                    <span class="tech-badge">UAEPASS</span>
                 </div>
             </div>
+
             <div class="project-card">
-                <h3>🛍️ Clothing Resale SaaS</h3>
-                <p>Multi-branch SaaS platform with full data isolation and analytics for 3 countries with 4 access levels.</p>
+                <h3>🛍️ Clothing Resale Multi-Branch SaaS Platform</h3>
+                <div class="metrics">
+                    <span class="metric">🌐 3 Countries</span>
+                    <span class="metric">🔒 Data Isolation</span>
+                    <span class="metric">📊 4 Access Levels</span>
+                </div>
+                <p>Developed scalable SaaS solution for Saudi Arabian clothing resale company with operations in Turkey and UAE. Implemented complete data isolation per branch with sophisticated 4-level access control system. Built advanced insights module tracking revenue, supplier quality, and employee performance metrics.</p>
+                <div class="project-features">
+                    <h4>Key Capabilities:</h4>
+                    <ul>
+                        <li>Full data isolation per branch</li>
+                        <li>4-tier permission system</li>
+                        <li>Revenue and analytics dashboard</li>
+                        <li>Supplier quality tracking</li>
+                        <li>Employee performance metrics</li>
+                    </ul>
+                </div>
                 <div class="project-tech">
-                    <span class="tech-badge">React</span>
-                    <span class="tech-badge">Express</span>
+                    <span class="tech-badge">React.js</span>
+                    <span class="tech-badge">Next.js</span>
+                    <span class="tech-badge">Express.js</span>
                     <span class="tech-badge">MongoDB</span>
+                    <span class="tech-badge">Docker</span>
                 </div>
             </div>
+
             <div class="project-card">
-                <h3>📋 OCR Insurance Pipeline</h3>
-                <p>AI-powered pipeline extracting data from insurance documents using Detectron2 and Faster R-CNN on AWS.</p>
+                <h3>📋 OCR Pipeline for Auto Insurance Documents</h3>
+                <div class="metrics">
+                    <span class="metric">🤖 AI Pipeline</span>
+                    <span class="metric">📄 Document Processing</span>
+                    <span class="metric">☁️ AWS Deployment</span>
+                </div>
+                <p>Engineered end-to-end AI pipeline for automated extraction and recognition of data from car insurance documents. Implemented object detection per field using Detectron2 and Faster R-CNN. Handles both handwritten and printed text extraction with high accuracy. Complete ML pipeline from dataset labeling to AWS production deployment on ECS.</p>
+                <div class="project-features">
+                    <h4>Technical Implementation:</h4>
+                    <ul>
+                        <li>Detectron2 & Faster R-CNN for object detection</li>
+                        <li>Handwritten/printed text recognition</li>
+                        <li>TorchServe model serving</li>
+                        <li>AWS ECS containerized deployment</li>
+                        <li>Production-grade ML pipeline</li>
+                    </ul>
+                </div>
                 <div class="project-tech">
                     <span class="tech-badge">Detectron2</span>
+                    <span class="tech-badge">Faster R-CNN</span>
                     <span class="tech-badge">PyTorch</span>
-                    <span class="tech-badge">AWS</span>
+                    <span class="tech-badge">TorchServe</span>
+                    <span class="tech-badge">AWS ECS</span>
                 </div>
             </div>
+
             <div class="project-card">
-                <h3>🛒 Multi-Vendor Marketplace</h3>
-                <p>Complete marketplace backend with vendor management, listings, search, and per-vendor analytics dashboards.</p>
+                <h3>🛒 Multi-Vendor Marketplace Platform</h3>
+                <div class="metrics">
+                    <span class="metric">🏪 Vendor Management</span>
+                    <span class="metric">📊 Per-Vendor Analytics</span>
+                    <span class="metric">🔍 Advanced Search</span>
+                </div>
+                <p>Architected complete backend infrastructure for online marketplace supporting vendor management, product listings, order processing, and advanced search capabilities. Built admin interface using Next.js with 3-level permission hierarchy. Developed per-vendor analytics dashboards providing insights into sales performance, customer behavior, and revenue metrics.</p>
+                <div class="project-features">
+                    <h4>Marketplace Features:</h4>
+                    <ul>
+                        <li>Full vendor lifecycle management</li>
+                        <li>Product listing & inventory</li>
+                        <li>Order processing & fulfillment</li>
+                        <li>Per-vendor analytics dashboards</li>
+                        <li>3-level permission system</li>
+                    </ul>
+                </div>
                 <div class="project-tech">
                     <span class="tech-badge">Node.js</span>
                     <span class="tech-badge">Next.js</span>
+                    <span class="tech-badge">React</span>
                     <span class="tech-badge">MongoDB</span>
                 </div>
             </div>
+
             <div class="project-card">
-                <h3>🤖 Network Assistant Chatbot</h3>
-                <p>LLM-powered chatbot for querying network infrastructure using natural language and Claude AI.</p>
+                <h3>🤖 Network Assistant – LLM Chatbot PoC</h3>
+                <div class="metrics">
+                    <span class="metric">🧠 Claude AI</span>
+                    <span class="metric">🗣️ Natural Language</span>
+                    <span class="metric">🔧 Network Infrastructure</span>
+                </div>
+                <p>Developed proof-of-concept LLM-powered chatbot for querying network infrastructure using natural language processing. Users can ask intuitive questions about device status, connection quality, and network events in plain English. Leverages Claude AI with advanced prompt engineering for accurate network data interpretation and response generation.</p>
+                <div class="project-features">
+                    <h4>Capabilities:</h4>
+                    <ul>
+                        <li>Natural language query processing</li>
+                        <li>Real-time network status queries</li>
+                        <li>Connection quality analysis</li>
+                        <li>Network event reporting</li>
+                        <li>Claude AI integration</li>
+                    </ul>
+                </div>
                 <div class="project-tech">
                     <span class="tech-badge">Claude AI</span>
                     <span class="tech-badge">Python</span>
                     <span class="tech-badge">MCP</span>
+                    <span class="tech-badge">LLM</span>
                 </div>
             </div>
         </div>
@@ -730,7 +923,12 @@
 
     <section id="contact" class="contact-section">
         <h2>Let's Build Something Amazing</h2>
-        <p style="font-size: 1.2rem; margin: 30px auto; max-width: 700px;">Open to opportunities in AI/ML, Backend Engineering, and innovative projects. Let's connect!</p>
+        <p style="font-size: 1.2rem; margin: 30px auto 20px; max-width: 700px;">Open to exciting opportunities in AI/ML, Backend Engineering, and innovative projects that push technological boundaries.</p>
+        
+        <a href="resume_en_optimsed.pdf" class="cv-button" target="_blank">
+            <i class="fas fa-file-download"></i> Download Full Resume
+        </a>
+
         <div class="contact-links">
             <a href="mailto:bougaalechriadh96@gmail.com" class="contact-link">
                 <i class="fas fa-envelope"></i> Email
@@ -749,7 +947,7 @@
 
     <footer>
         <p>© 2026 Riadh Bougaalech</p>
-        <p>AI/ML Engineer | Backend Specialist | Full-Stack Developer</p>
+        <p>Senior Software Engineer | AI/ML Specialist | Backend Expert | Full-Stack Developer</p>
     </footer>
 </body>
 </html>
